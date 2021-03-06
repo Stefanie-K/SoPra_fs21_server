@@ -1,6 +1,7 @@
 package ch.uzh.ifi.hase.soprafs21.controller;
 
 import ch.uzh.ifi.hase.soprafs21.entity.User;
+import ch.uzh.ifi.hase.soprafs21.rest.dto.LogedinUserPostDTO;
 import ch.uzh.ifi.hase.soprafs21.rest.dto.UserGetDTO;
 import ch.uzh.ifi.hase.soprafs21.rest.dto.UserPostDTO;
 import ch.uzh.ifi.hase.soprafs21.rest.mapper.DTOMapper;
@@ -58,10 +59,10 @@ public class UserController {
     @PostMapping("/users/login")
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
-    public UserGetDTO loginUser(@RequestBody UserPostDTO userPostDTO) {
+    public UserGetDTO loginUser(@RequestBody LogedinUserPostDTO logedinUserPostDTO) {
         // convert API user to internal representation
         System.out.println("message");
-        User userInput = DTOMapper.INSTANCE.convertUserPostDTOtoEntity(userPostDTO);
+        User userInput = DTOMapper.INSTANCE.convertLogedinUserPostDTOtoEntity(logedinUserPostDTO);
 
         // check if login is possible
         User logedInUser = userService.checkIfLoginPossible(userInput);

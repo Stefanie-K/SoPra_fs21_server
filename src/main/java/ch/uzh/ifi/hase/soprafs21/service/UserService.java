@@ -78,16 +78,14 @@ public class UserService {
     public User checkIfLoginPossible(User userToBeLogedIn) {
         User userByUsername = userRepository.findByUsername(userToBeLogedIn.getUsername());
 
-        String baseErrorMessage = "The %s provided %s not unique. Therefore, the user could not be created! USER DOES NOT EXIST";
         if (userByUsername == null) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, String.format(baseErrorMessage, "username", "is"));
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "USER DOES NOT EXIST");
         }
 
         //check if password is correct //TODO: check why this does not work
         if (userToBeLogedIn.getPassword().equals(userByUsername.getPassword())){
             return userByUsername;
-        }
-        return userByUsername;
+        } else{ throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "PASSWORD IS NOT CORRECT");}
 
     }
 }
