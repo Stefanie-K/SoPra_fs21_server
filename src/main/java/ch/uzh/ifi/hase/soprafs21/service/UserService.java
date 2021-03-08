@@ -14,6 +14,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.UUID;
+import java.time.LocalDate;
 
 /**
  * User Service
@@ -40,6 +41,8 @@ public class UserService {
     public User createUser(User newUser) {
         newUser.setToken(UUID.randomUUID().toString());
         newUser.setStatus(UserStatus.OFFLINE);
+        newUser.setDateCreated(LocalDate.now());
+        System.out.println(LocalDate.now());//TODO: fix this
 
         checkIfUserExists(newUser);
 

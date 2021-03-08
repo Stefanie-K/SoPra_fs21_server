@@ -45,13 +45,13 @@ public class UserController {
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
     public UserGetDTO createUser(@RequestBody UserPostDTO userPostDTO) {
-        System.out.println("CreatUser : register");
+        System.out.println("CreateUser : register");
         // convert API user to internal representation
         User userInput = DTOMapper.INSTANCE.convertUserPostDTOtoEntity(userPostDTO);
-
+        System.out.println("convert user"+ userInput.getName()+ "to PostDTO");
         // create user
         User createdUser = userService.createUser(userInput);
-
+        System.out.println("created"+ userInput.getName());
         // convert internal representation of user back to API
         return DTOMapper.INSTANCE.convertEntityToUserGetDTO(createdUser);
     }

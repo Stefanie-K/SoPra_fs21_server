@@ -2,13 +2,15 @@ package ch.uzh.ifi.hase.soprafs21.rest.dto;
 
 import ch.uzh.ifi.hase.soprafs21.constant.UserStatus;
 
+import java.time.LocalDate;
+
 public class UserGetDTO {
 
     private Long id;
     private String name;
     private String username;
     private UserStatus status;
-
+    private LocalDate dateCreated;
     private String password;
 
     public Long getId() {
@@ -35,9 +37,7 @@ public class UserGetDTO {
         this.username = username;
     }
 
-    public UserStatus getStatus() {
-        return status;
-    }
+    public UserStatus getStatus() {return status;}
 
     public void setStatus(UserStatus status) {
         this.status = status;
@@ -48,4 +48,8 @@ public class UserGetDTO {
 
     //I think this is needed to set the password (form the frontend?)
     public void setPassword(String password) {this.password = password;}
+
+    public LocalDate getDateCreated() {return dateCreated;}
+
+    public void setDateCreated(LocalDate dateCreated) {this.dateCreated = dateCreated;}
 }
