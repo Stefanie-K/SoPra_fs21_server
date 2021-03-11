@@ -1,6 +1,6 @@
 package ch.uzh.ifi.hase.soprafs21.rest.dto;
 
-public class UserPostDTO {
+public class UserPostDTO {//new
 
     private String name;
 
