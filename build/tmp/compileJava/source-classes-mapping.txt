@@ -1,0 +1,23 @@
+ch/uzh/ifi/hase/soprafs21/rest/dto/UserPostDTO.java
+ ch.uzh.ifi.hase.soprafs21.rest.dto.UserPostDTO
+ch/uzh/ifi/hase/soprafs21/entity/User.java
+ ch.uzh.ifi.hase.soprafs21.entity.User
+ch/uzh/ifi/hase/soprafs21/constant/UserStatus.java
+ ch.uzh.ifi.hase.soprafs21.constant.UserStatus
+ch/uzh/ifi/hase/soprafs21/rest/dto/UserGetDTO.java
+ ch.uzh.ifi.hase.soprafs21.rest.dto.UserGetDTO
+ch/uzh/ifi/hase/soprafs21/controller/UserController.java
+ ch.uzh.ifi.hase.soprafs21.controller.UserController
+ch/uzh/ifi/hase/soprafs21/Application.java
+ ch.uzh.ifi.hase.soprafs21.Application
+ ch.uzh.ifi.hase.soprafs21.Application$1
+ch/uzh/ifi/hase/soprafs21/repository/UserRepository.java
+ ch.uzh.ifi.hase.soprafs21.repository.UserRepository
+ch/uzh/ifi/hase/soprafs21/rest/mapper/DTOMapper.java
+ ch.uzh.ifi.hase.soprafs21.rest.mapper.DTOMapper
+ch/uzh/ifi/hase/soprafs21/exceptions/GlobalExceptionAdvice.java
+ ch.uzh.ifi.hase.soprafs21.exceptions.GlobalExceptionAdvice
+ch/uzh/ifi/hase/soprafs21/service/UserService.java
+ ch.uzh.ifi.hase.soprafs21.service.UserService
+ch/uzh/ifi/hase/soprafs21/rest/dto/LogedinUserPostDTO.java
+ ch.uzh.ifi.hase.soprafs21.rest.dto.LogedinUserPostDTO

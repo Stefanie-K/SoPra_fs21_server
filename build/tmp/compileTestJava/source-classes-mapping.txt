@@ -1,0 +1,10 @@
+ch/uzh/ifi/hase/soprafs21/service/UserServiceIntegrationTest.java
+ ch.uzh.ifi.hase.soprafs21.service.UserServiceIntegrationTest
+ch/uzh/ifi/hase/soprafs21/service/UserServiceTest.java
+ ch.uzh.ifi.hase.soprafs21.service.UserServiceTest
+ch/uzh/ifi/hase/soprafs21/repository/UserRepositoryIntegrationTest.java
+ ch.uzh.ifi.hase.soprafs21.repository.UserRepositoryIntegrationTest
+ch/uzh/ifi/hase/soprafs21/rest/mapper/DTOMapperTest.java
+ ch.uzh.ifi.hase.soprafs21.rest.mapper.DTOMapperTest
+ch/uzh/ifi/hase/soprafs21/controller/UserControllerTest.java
+ ch.uzh.ifi.hase.soprafs21.controller.UserControllerTest

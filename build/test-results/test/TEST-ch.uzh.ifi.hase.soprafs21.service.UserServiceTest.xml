@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ch.uzh.ifi.hase.soprafs21.service.UserServiceTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2021-03-11T07:59:44" hostname="SURFACE-7-SK" time="0.136">
+  <properties/>
+  <testcase name="createUser_validInputs_success()" classname="ch.uzh.ifi.hase.soprafs21.service.UserServiceTest" time="0.123"/>
+  <testcase name="createUser_duplicateName_throwsException()" classname="ch.uzh.ifi.hase.soprafs21.service.UserServiceTest" time="0.005"/>
+  <testcase name="createUser_duplicateInputs_throwsException()" classname="ch.uzh.ifi.hase.soprafs21.service.UserServiceTest" time="0.006"/>
+  <system-out><![CDATA[2021-03-11
+2021-03-11
+2021-03-11
+2021-03-11
+2021-03-11
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
