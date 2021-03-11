@@ -12,6 +12,7 @@ public class UserGetDTO {
     private UserStatus status;
     private LocalDate dateCreated;
     private String password;
+    private String token;
 
     public Long getId() {
         return id;
@@ -52,4 +53,8 @@ public class UserGetDTO {
     public LocalDate getDateCreated() {return dateCreated;}
 
     public void setDateCreated(LocalDate dateCreated) {this.dateCreated = dateCreated;}
+
+    public String getToken() {return token;}
+
+    public void setToken(String token) {this.token = token;}
 }

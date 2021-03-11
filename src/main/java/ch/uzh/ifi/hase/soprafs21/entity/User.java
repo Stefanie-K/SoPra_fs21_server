@@ -41,6 +41,8 @@ public class User implements Serializable {
     @Column
     private LocalDate dateCreated;
 
+    //also possible @OneToOne, OneToMany
+
     public Long getId() {
         return id;
     }

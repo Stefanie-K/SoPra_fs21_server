@@ -16,7 +16,7 @@ public class UserRepositoryIntegrationTest {
     @Autowired
     private TestEntityManager entityManager;
 
-    @Autowired
+    @Autowired //added @Primary to get it working
     private UserRepository userRepository;
 
     @Test
@@ -27,6 +27,7 @@ public class UserRepositoryIntegrationTest {
         user.setUsername("firstname@lastname");
         user.setStatus(UserStatus.OFFLINE);
         user.setToken("1");
+        user.setPassword("123");
 
         entityManager.persist(user);
         entityManager.flush();

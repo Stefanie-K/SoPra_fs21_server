@@ -8,6 +8,8 @@ public class UserPostDTO {
 
     private String password;
 
+    private String token;
+
     public String getName() {return name;}
 
     public void setName(String name) {
@@ -28,4 +30,7 @@ public class UserPostDTO {
     //I don't think this is needed
     //public void setPassword(String password) {this.password = password;}
 
+    public String getToken() {return token;}
+
+    public void setToken(String token) {this.token = token;}
 }
