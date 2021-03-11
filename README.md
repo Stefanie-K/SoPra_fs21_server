@@ -1,5 +1,6 @@
 # SoPra RESTful Service Template FS21
 
+#make a change
 ## Getting started with Spring Boot
 
 -   Documentation: https://docs.spring.io/spring-boot/docs/current/reference/html/index.html
@@ -41,7 +42,7 @@ More Information about [Gradle Wrapper](https://docs.gradle.org/current/userguid
 ### Build
 
 ```bash
-./gradlew build
+gradlew.bat build
 ```
 
 ### Run
@@ -71,7 +72,7 @@ and in the other one:
 
 If you want to avoid running all tests with every change, use the following command instead:
 
-`./gradlew build --continuous -xtest`
+`gradlew.bat build --continuous -xtest`
 
 ## API Endpoint Testing
 
