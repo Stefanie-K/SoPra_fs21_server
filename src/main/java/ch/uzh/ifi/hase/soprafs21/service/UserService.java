@@ -104,7 +104,7 @@ public class UserService {
     public User updateUser(User user, LogedinUserPostDTO logedinUserPostDTO){
         user.setUsername(logedinUserPostDTO.getUsername());
         System.out.println("BIRTHDATE: " + logedinUserPostDTO.getBirthdate());
-        user.setBirthdate("01-01-2001");//TODO: fix this
+        user.setBirthdate(logedinUserPostDTO.getBirthdate());
         return user;
     }
 }
