@@ -13,6 +13,7 @@ public class UserGetDTO {
     private LocalDate dateCreated;
     private String password;
     private String token;
+    private String birthdate;
 
     public Long getId() {
         return id;
@@ -57,4 +58,8 @@ public class UserGetDTO {
     public String getToken() {return token;}
 
     public void setToken(String token) {this.token = token;}
+
+    public String getBirthdate() {return birthdate;}
+
+    public void setBirthdate(String birthdate) {this.birthdate = birthdate;}
 }

@@ -6,6 +6,8 @@ public class LogedinUserPostDTO {
 
     private String password;
 
+    private String birthdate;
+
 
     public String getUsername() {
         return username;
@@ -20,4 +22,9 @@ public class LogedinUserPostDTO {
 
     //I don't think this is needed
     //public void setPassword(String password) {this.password = password;}
+
+    public String getBirthdate() {return birthdate;}
+
+    public void setBirthdate(String birthdate) {this.birthdate = birthdate;}
+
 }

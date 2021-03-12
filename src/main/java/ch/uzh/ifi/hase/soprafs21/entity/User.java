@@ -21,7 +21,7 @@ public class User implements Serializable {
 
     @Id
     @GeneratedValue
-    private Long id;
+    private Long userID;
 
     @Column
     private String name;
@@ -41,14 +41,17 @@ public class User implements Serializable {
     @Column
     private LocalDate dateCreated;
 
+    @Column
+    private String birthdate;
+
     //also possible @OneToOne, OneToMany
 
-    public Long getId() {
-        return id;
+    public Long getUserID() {
+        return userID;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setUserID(Long id) {
+        this.userID = id;
     }
 
     public String getName() {
@@ -92,5 +95,9 @@ public class User implements Serializable {
     public LocalDate getDateCreated() {return dateCreated;}
 
     public void setDateCreated(LocalDate dateCreated) {this.dateCreated = dateCreated;}
+
+    public String getBirthdate() {return birthdate;}
+
+    public void setBirthdate(String birthdate) {this.birthdate = birthdate;}
 
 }

@@ -3,6 +3,7 @@ package ch.uzh.ifi.hase.soprafs21.service;
 import ch.uzh.ifi.hase.soprafs21.constant.UserStatus;
 import ch.uzh.ifi.hase.soprafs21.entity.User;
 import ch.uzh.ifi.hase.soprafs21.repository.UserRepository;
+import ch.uzh.ifi.hase.soprafs21.rest.dto.LogedinUserPostDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,14 @@ public class UserService {
 
     public List<User> getUsers() {
         return this.userRepository.findAll();
+    }
+
+    public User getUserById(Long id){
+        return this.userRepository.findByUserID(id);
+    }
+
+    public User getUserByUsername(String username){
+        return this.userRepository.findByUsername(username);
     }
 
     public User createUser(User newUser) {
@@ -90,5 +99,12 @@ public class UserService {
             return userByUsername;
         } else{ throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "PASSWORD IS NOT CORRECT");}
 
+    }
+
+    public User updateUser(User user, LogedinUserPostDTO logedinUserPostDTO){
+        user.setUsername(logedinUserPostDTO.getUsername());
+        System.out.println("BIRTHDATE: " + logedinUserPostDTO.getBirthdate());
+        user.setBirthdate("01-01-2001");//TODO: fix this
+        return user;
     }
 }

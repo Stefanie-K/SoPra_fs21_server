@@ -8,7 +8,7 @@ import javax.annotation.processing.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2021-03-11T16:51:24+0100",
+    date = "2021-03-12T16:10:29+0100",
     comments = "version: 1.3.1.Final, compiler: javac, environment: Java 15.0.2 (AdoptOpenJDK)"
 )
 public class DTOMapperImpl implements DTOMapper {
@@ -23,6 +23,7 @@ public class DTOMapperImpl implements DTOMapper {
 
         user.setName( userPostDTO.getName() );
         user.setPassword( userPostDTO.getPassword() );
+        user.setBirthdate( userPostDTO.getBirthdate() );
         user.setUsername( userPostDTO.getUsername() );
         user.setToken( userPostDTO.getToken() );
 
@@ -38,6 +39,7 @@ public class DTOMapperImpl implements DTOMapper {
         User user = new User();
 
         user.setPassword( logedinUserPostDTO.getPassword() );
+        user.setBirthdate( logedinUserPostDTO.getBirthdate() );
         user.setUsername( logedinUserPostDTO.getUsername() );
 
         return user;
@@ -52,7 +54,8 @@ public class DTOMapperImpl implements DTOMapper {
         UserGetDTO userGetDTO = new UserGetDTO();
 
         userGetDTO.setName( user.getName() );
-        userGetDTO.setId( user.getId() );
+        userGetDTO.setBirthdate( user.getBirthdate() );
+        userGetDTO.setId( user.getUserID() );
         userGetDTO.setUsername( user.getUsername() );
         userGetDTO.setStatus( user.getStatus() );
         userGetDTO.setPassword( user.getPassword() );

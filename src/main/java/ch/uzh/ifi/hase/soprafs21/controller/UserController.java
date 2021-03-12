@@ -6,6 +6,7 @@ import ch.uzh.ifi.hase.soprafs21.rest.dto.UserGetDTO;
 import ch.uzh.ifi.hase.soprafs21.rest.dto.UserPostDTO;
 import ch.uzh.ifi.hase.soprafs21.rest.mapper.DTOMapper;
 import ch.uzh.ifi.hase.soprafs21.service.UserService;
+import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -69,5 +70,30 @@ public class UserController {
 
         // convert internal representation of user back to API
         return DTOMapper.INSTANCE.convertEntityToUserGetDTO(logedInUser);
+    }
+
+    @GetMapping("/users/{userID}")
+    @ResponseStatus(HttpStatus.OK)
+    public UserGetDTO getUserByUserID(@PathVariable("userID") Long userID) {
+        // fetch all users in the internal representation
+        User user = userService.getUserById(userID);
+        UserGetDTO userGetDTO = DTOMapper.INSTANCE.convertEntityToUserGetDTO(user);
+
+        return userGetDTO;
+    }
+
+    @PutMapping("/users/{userID}")
+    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseBody
+    public UserGetDTO updateUser(@RequestBody LogedinUserPostDTO logedinUserPostDTO) {
+        // convert API user to internal representation
+        int i=1;
+        long l=i;
+        System.out.println("Username: "+logedinUserPostDTO.getUsername());
+        User user = userService.getUserById(l);
+        User userUpdated = userService.updateUser(user, logedinUserPostDTO);
+        UserGetDTO userGetDTO = DTOMapper.INSTANCE.convertEntityToUserGetDTO(userUpdated);
+
+        return userGetDTO;
     }
 }
