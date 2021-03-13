@@ -29,9 +29,10 @@ public interface DTOMapper {
     @Mapping(source = "username", target = "username")
     @Mapping(source = "password", target = "password")
     @Mapping(source = "birthdate", target = "birthdate")
+    @Mapping(source = "userID", target = "userID")//TODO:Find out where userId is
     User convertLogedinUserPostDTOtoEntity(LogedinUserPostDTO logedinUserPostDTO);
 
-    @Mapping(source = "userID", target = "id")
+    @Mapping(source = "userID", target = "id")//entity: userID, GetDTO: id
     @Mapping(source = "name", target = "name")
     @Mapping(source = "username", target = "username")
     @Mapping(source = "status", target = "status")

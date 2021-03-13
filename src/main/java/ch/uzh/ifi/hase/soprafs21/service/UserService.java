@@ -102,9 +102,17 @@ public class UserService {
     }
 
     public User updateUser(User user, LogedinUserPostDTO logedinUserPostDTO){
-        user.setUsername(logedinUserPostDTO.getUsername());
-        System.out.println("BIRTHDATE: " + logedinUserPostDTO.getBirthdate());
-        user.setBirthdate(logedinUserPostDTO.getBirthdate());
-        return user;
+        User userByUsername = userRepository.findByUsername(logedinUserPostDTO.getUsername());
+
+        String baseErrorMessage = "The %s provided %s not unique. Therefore, the change could not be made!";
+        if (userByUsername != null) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, String.format(baseErrorMessage, "username", "is"));
+        }
+        else{
+            user.setUsername(logedinUserPostDTO.getUsername());
+            System.out.println("BIRTHDATE: " + logedinUserPostDTO.getBirthdate());
+            user.setBirthdate(logedinUserPostDTO.getBirthdate());
+            return user;
+        }
     }
 }

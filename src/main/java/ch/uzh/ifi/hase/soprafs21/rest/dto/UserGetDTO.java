@@ -6,7 +6,7 @@ import java.time.LocalDate;
 
 public class UserGetDTO {
 
-    private Long id;
+    private Long userID;
     private String name;
     private String username;
     private UserStatus status;
@@ -16,11 +16,11 @@ public class UserGetDTO {
     private String birthdate;
 
     public Long getId() {
-        return id;
+        return userID;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        this.userID = id;
     }
 
     public String getName() {

@@ -8,10 +8,9 @@ public class LogedinUserPostDTO {
 
     private String birthdate;
 
+    private Long userID;
 
-    public String getUsername() {
-        return username;
-    }
+    public String getUsername() {return username;}
 
     public void setUsername(String username) {
         this.username = username;
@@ -26,5 +25,10 @@ public class LogedinUserPostDTO {
     public String getBirthdate() {return birthdate;}
 
     public void setBirthdate(String birthdate) {this.birthdate = birthdate;}
+
+    public Long getUserID() {return userID;}
+
+    public void setUserID(Long userID) {this.userID = userID;}
+
 
 }

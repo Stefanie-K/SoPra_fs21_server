@@ -12,6 +12,8 @@ public class UserPostDTO {//new
 
     private String birthdate;
 
+    private Long userID;
+
     public String getName() {return name;}
 
     public void setName(String name) {
@@ -39,4 +41,8 @@ public class UserPostDTO {//new
     public String getBirthdate() {return birthdate;}
 
     public void setBirthdate(String birthdate) {this.birthdate = birthdate;}
+
+    public Long getUserID() {return userID;}
+
+    public void setUserID(Long userID) {this.userID = userID;}
 }

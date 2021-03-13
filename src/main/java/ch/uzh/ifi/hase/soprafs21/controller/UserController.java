@@ -87,10 +87,8 @@ public class UserController {
     @ResponseBody
     public UserGetDTO updateUser(@RequestBody LogedinUserPostDTO logedinUserPostDTO) {
         // convert API user to internal representation
-        int i=1;
-        long l=i;
         System.out.println("Username: "+logedinUserPostDTO.getUsername());
-        User user = userService.getUserById(l);
+        User user = userService.getUserById(logedinUserPostDTO.getUserID());
         User userUpdated = userService.updateUser(user, logedinUserPostDTO);
         UserGetDTO userGetDTO = DTOMapper.INSTANCE.convertEntityToUserGetDTO(userUpdated);
 
