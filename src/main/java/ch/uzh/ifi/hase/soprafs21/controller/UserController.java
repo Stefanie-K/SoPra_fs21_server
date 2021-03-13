@@ -50,8 +50,12 @@ public class UserController {
         // convert API user to internal representation
         User userInput = DTOMapper.INSTANCE.convertUserPostDTOtoEntity(userPostDTO);
         System.out.println("convert user"+ userInput.getName()+ "to PostDTO");
+
         // create user
         User createdUser = userService.createUser(userInput);
+        //log in
+        userService.login(createdUser);
+
         System.out.println("created"+ userInput.getName());
         // convert internal representation of user back to API
         return DTOMapper.INSTANCE.convertEntityToUserGetDTO(createdUser);
@@ -67,6 +71,8 @@ public class UserController {
 
         // check if login is possible
         User logedInUser = userService.checkIfLoginPossible(userInput);
+        //if login was possible set status to online
+        userService.login(logedInUser);
 
         // convert internal representation of user back to API
         return DTOMapper.INSTANCE.convertEntityToUserGetDTO(logedInUser);
@@ -82,7 +88,7 @@ public class UserController {
         return userGetDTO;
     }
 
-    @PutMapping("/users/{userID}")
+    @PutMapping("/user")
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
     public UserGetDTO updateUser(@RequestBody LogedinUserPostDTO logedinUserPostDTO) {
@@ -93,5 +99,14 @@ public class UserController {
         UserGetDTO userGetDTO = DTOMapper.INSTANCE.convertEntityToUserGetDTO(userUpdated);
 
         return userGetDTO;
+    }
+
+    @PutMapping("/user/{token}")
+    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseBody
+    public void logout(@PathVariable("token") String token) {
+        // convert API user to internal representation
+        User user = userService.getUserByToken(token);
+        UserService.logout(user);
     }
 }

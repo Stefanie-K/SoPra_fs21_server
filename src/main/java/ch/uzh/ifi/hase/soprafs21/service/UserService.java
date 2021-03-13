@@ -47,6 +47,8 @@ public class UserService {
         return this.userRepository.findByUsername(username);
     }
 
+    public User getUserByToken (String token) {return this.userRepository.findByToken(token);}
+
     public User createUser(User newUser) {
         newUser.setToken(UUID.randomUUID().toString());
         newUser.setStatus(UserStatus.OFFLINE);
@@ -94,7 +96,7 @@ public class UserService {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "USER DOES NOT EXIST");
         }
 
-        //check if password is correct //TODO: check why this does not work
+        //check if password is correct
         if (userToBeLogedIn.getPassword().equals(userByUsername.getPassword())){
             return userByUsername;
         } else{ throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "PASSWORD IS NOT CORRECT");}
@@ -105,7 +107,7 @@ public class UserService {
         User userByUsername = userRepository.findByUsername(logedinUserPostDTO.getUsername());
 
         String baseErrorMessage = "The %s provided %s not unique. Therefore, the change could not be made!";
-        if (userByUsername != null) {
+        if (userByUsername != null && userByUsername.getUserID()!=logedinUserPostDTO.getUserID()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, String.format(baseErrorMessage, "username", "is"));
         }
         else{
@@ -114,5 +116,14 @@ public class UserService {
             user.setBirthdate(logedinUserPostDTO.getBirthdate());
             return user;
         }
+    }
+
+    public void login(User user){
+        user.setStatus(UserStatus.ONLINE);
+    }
+
+    public static void logout(User user){
+        user.setStatus(UserStatus.OFFLINE);
+        System.out.print("Loged out User with ID-number "+ user.getUserID());
     }
 }
