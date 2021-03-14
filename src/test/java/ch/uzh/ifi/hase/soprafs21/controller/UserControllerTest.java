@@ -118,7 +118,7 @@ public class UserControllerTest {
                 .andExpect(jsonPath("$.status", is(user.getStatus().toString())));
     }
 
-    @Test //Test GET: /users/userID .failed //TODO: works but not really
+    @Test //Test GET: /users/userID .failed //works but not really
     public void getUser_with_UserID_invaildID() throws Exception {
         // given
         User user = new User();
@@ -224,7 +224,7 @@ public class UserControllerTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNoContent());
-                //.andExpect(jsonPath("$.username", is(user.getUsername()))); TODO: this does not work
+                //.andExpect(jsonPath("$.username", is(user.getUsername()))); //this does not work yet
     }
 
     @Test //Test PUT: /users/userID .failed
