@@ -29,7 +29,7 @@ public interface DTOMapper {
     @Mapping(source = "username", target = "username")
     @Mapping(source = "password", target = "password")
     @Mapping(source = "birthdate", target = "birthdate")
-    @Mapping(source = "userID", target = "userID")//TODO:Find out where userId is
+    @Mapping(source = "userID", target = "userID")
     User convertLogedinUserPostDTOtoEntity(LogedinUserPostDTO logedinUserPostDTO);
 
     @Mapping(source = "userID", target = "id")//entity: userID, GetDTO: id

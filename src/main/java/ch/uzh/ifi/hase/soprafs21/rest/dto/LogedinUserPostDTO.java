@@ -19,8 +19,8 @@ public class LogedinUserPostDTO {
     //I think this is needed to get the password, backend gets it from frontend
     public String getPassword() {return password;}
 
-    //I don't think this is needed
-    //public void setPassword(String password) {this.password = password;}
+    //needed for the test
+    public void setPassword(String password) {this.password = password;}
 
     public String getBirthdate() {return birthdate;}
 

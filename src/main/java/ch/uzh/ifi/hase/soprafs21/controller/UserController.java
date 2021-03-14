@@ -9,6 +9,7 @@ import ch.uzh.ifi.hase.soprafs21.service.UserService;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,11 +43,26 @@ public class UserController {
         return userGetDTOs;
     }
 
-    @PostMapping("/users/register")
+    @GetMapping("/users/{userID}")
+    @ResponseStatus(HttpStatus.OK)
+    public UserGetDTO getUserByUserID(@PathVariable("userID") Long userID) {
+        // fetch all users in the internal representation
+        User user = userService.getUserById(userID);
+        UserGetDTO userGetDTO = DTOMapper.INSTANCE.convertEntityToUserGetDTO(user);
+
+        if (user == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "user with userID "+ userID + " was not found");
+        }
+
+        return userGetDTO;
+    }
+
+
+    @PostMapping("/users")
     @ResponseStatus(HttpStatus.CREATED)
     @ResponseBody
     public UserGetDTO createUser(@RequestBody UserPostDTO userPostDTO) {
-        System.out.println("CreateUser : register");
+        System.out.println("Add user");
         // convert API user to internal representation
         User userInput = DTOMapper.INSTANCE.convertUserPostDTOtoEntity(userPostDTO);
         System.out.println("convert user"+ userInput.getName()+ "to PostDTO");
@@ -66,7 +82,7 @@ public class UserController {
     @ResponseBody
     public UserGetDTO loginUser(@RequestBody LogedinUserPostDTO logedinUserPostDTO) {
         // convert API user to internal representation
-        System.out.println("message");
+        System.out.println("Login user");
         User userInput = DTOMapper.INSTANCE.convertLogedinUserPostDTOtoEntity(logedinUserPostDTO);
 
         // check if login is possible
@@ -78,23 +94,18 @@ public class UserController {
         return DTOMapper.INSTANCE.convertEntityToUserGetDTO(logedInUser);
     }
 
-    @GetMapping("/users/{userID}")
-    @ResponseStatus(HttpStatus.OK)
-    public UserGetDTO getUserByUserID(@PathVariable("userID") Long userID) {
-        // fetch all users in the internal representation
-        User user = userService.getUserById(userID);
-        UserGetDTO userGetDTO = DTOMapper.INSTANCE.convertEntityToUserGetDTO(user);
-
-        return userGetDTO;
-    }
-
-    @PutMapping("/user")
-    @ResponseStatus(HttpStatus.CREATED)
+    @PutMapping("/users/{userID}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     @ResponseBody
-    public UserGetDTO updateUser(@RequestBody LogedinUserPostDTO logedinUserPostDTO) {
+    public UserGetDTO updateUser(@RequestBody LogedinUserPostDTO logedinUserPostDTO){ //@PathVariable long id) {
         // convert API user to internal representation
         System.out.println("Username: "+logedinUserPostDTO.getUsername());
         User user = userService.getUserById(logedinUserPostDTO.getUserID());
+
+        if (user == null) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "user with userID "+ logedinUserPostDTO.getUserID() + " was not found");
+        }
+
         User userUpdated = userService.updateUser(user, logedinUserPostDTO);
         UserGetDTO userGetDTO = DTOMapper.INSTANCE.convertEntityToUserGetDTO(userUpdated);
 
@@ -102,11 +113,12 @@ public class UserController {
     }
 
     @PutMapping("/user/{token}")
-    @ResponseStatus(HttpStatus.CREATED)
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     @ResponseBody
     public void logout(@PathVariable("token") String token) {
         // convert API user to internal representation
         User user = userService.getUserByToken(token);
         UserService.logout(user);
     }
+
 }

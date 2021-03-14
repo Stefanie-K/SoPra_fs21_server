@@ -53,7 +53,6 @@ public class UserService {
         newUser.setToken(UUID.randomUUID().toString());
         newUser.setStatus(UserStatus.OFFLINE);
         newUser.setDateCreated(LocalDate.now());
-        System.out.println(LocalDate.now());//TODO: fix this
 
         checkIfUserExists(newUser);
 
@@ -77,15 +76,15 @@ public class UserService {
         User userByUsername = userRepository.findByUsername(userToBeCreated.getUsername());
         User userByName = userRepository.findByName(userToBeCreated.getName());
 
-        String baseErrorMessage = "The %s provided %s not unique. Therefore, the user could not be created!";
+        String baseErrorMessage = "Add User failed because the %s provided %s not unique.";
         if (userByUsername != null && userByName != null) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, String.format(baseErrorMessage, "username and the name", "are"));
+            throw new ResponseStatusException(HttpStatus.CONFLICT, String.format(baseErrorMessage, "username and the name", "are"));
         }
         else if (userByUsername != null) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, String.format(baseErrorMessage, "username", "is"));
+            throw new ResponseStatusException(HttpStatus.CONFLICT, String.format(baseErrorMessage, "username", "is"));
         }
         else if (userByName != null) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, String.format(baseErrorMessage, "name", "is"));
+            throw new ResponseStatusException(HttpStatus.CONFLICT, String.format(baseErrorMessage, "name", "is"));
         }
     }
 
@@ -93,7 +92,7 @@ public class UserService {
         User userByUsername = userRepository.findByUsername(userToBeLogedIn.getUsername());
 
         if (userByUsername == null) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "USER DOES NOT EXIST");
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "USER DOES NOT EXIST");
         }
 
         //check if password is correct
