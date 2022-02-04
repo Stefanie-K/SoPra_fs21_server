@@ -52,7 +52,6 @@ public class UserService {
     public User createUser(User newUser) {
         newUser.setToken(UUID.randomUUID().toString());
         newUser.setStatus(UserStatus.OFFLINE);
-        newUser.setDateCreated(LocalDate.now());
 
         checkIfUserExists(newUser);
 
@@ -111,8 +110,6 @@ public class UserService {
         }
         else{
             user.setUsername(logedinUserPostDTO.getUsername());
-            System.out.println("BIRTHDATE: " + logedinUserPostDTO.getBirthdate());
-            user.setBirthdate(logedinUserPostDTO.getBirthdate());
             return user;
         }
     }

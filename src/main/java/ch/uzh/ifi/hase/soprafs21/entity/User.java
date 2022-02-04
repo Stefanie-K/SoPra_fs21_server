@@ -4,7 +4,6 @@ import ch.uzh.ifi.hase.soprafs21.constant.UserStatus;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDate;
 
 /**
  * Internal User Representation
@@ -38,11 +37,6 @@ public class User implements Serializable {
     @Column(nullable = false)
     private String password;
 
-    @Column
-    private LocalDate dateCreated;
-
-    @Column
-    private String birthdate;
 
     //also possible @OneToOne, OneToMany
 
@@ -91,13 +85,5 @@ public class User implements Serializable {
 
     // IDK if needed?
     public void setPassword(String password) {this.password = password;}
-
-    public LocalDate getDateCreated() {return dateCreated;}
-
-    public void setDateCreated(LocalDate dateCreated) {this.dateCreated = dateCreated;}
-
-    public String getBirthdate() {return birthdate;}
-
-    public void setBirthdate(String birthdate) {this.birthdate = birthdate;}
 
 }

@@ -10,8 +10,6 @@ public class UserPostDTO {//new
 
     private String token;
 
-    private String birthdate;
-
     private Long userID;
 
     public String getName() {return name;}
@@ -37,10 +35,6 @@ public class UserPostDTO {//new
     public String getToken() {return token;}
 
     public void setToken(String token) {this.token = token;}
-
-    public String getBirthdate() {return birthdate;}
-
-    public void setBirthdate(String birthdate) {this.birthdate = birthdate;}
 
     public Long getUserID() {return userID;}
 

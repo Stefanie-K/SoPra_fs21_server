@@ -10,10 +10,8 @@ public class UserGetDTO {
     private String name;
     private String username;
     private UserStatus status;
-    private LocalDate dateCreated;
     private String password;
     private String token;
-    private String birthdate;
 
     public Long getId() {
         return userID;
@@ -51,15 +49,8 @@ public class UserGetDTO {
     //I think this is needed to set the password (form the frontend?)
     public void setPassword(String password) {this.password = password;}
 
-    public LocalDate getDateCreated() {return dateCreated;}
-
-    public void setDateCreated(LocalDate dateCreated) {this.dateCreated = dateCreated;}
-
     public String getToken() {return token;}
 
     public void setToken(String token) {this.token = token;}
 
-    public String getBirthdate() {return birthdate;}
-
-    public void setBirthdate(String birthdate) {this.birthdate = birthdate;}
 }
